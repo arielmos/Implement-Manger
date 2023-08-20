@@ -31,7 +31,10 @@ extern const int d7;
 extern const int lcdColumns;
 extern const int lcdRows;
 
-class myLcd{
+extern const int lcdDelay;
+
+class myLcd
+{
   LiquidCrystal m_lcd;
   int m_lcdColumns;
   int m_lcdRows;
@@ -52,7 +55,5 @@ class myLcd{
   
   // Example of flashing a message on the LCD
   void flashMessage(const char* message, int times, int onTime, int offTime);
-
-  void run();
 };
 #endif /* LCD_H_ */

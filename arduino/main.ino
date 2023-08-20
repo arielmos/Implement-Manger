@@ -1,37 +1,41 @@
-#include <StaticThreadController.h>
-#include <Thread.h>
-#include <ThreadController.h>
+#include "implement_manager.h"
 
-#include "lcd.h"
-#include "menu.h"
+volatile bool newData = false;
+String receivedStr;
 
-Menu menuInstance(menuItems, numMenuItems);
-myLcd lcdInstance(lcdColumns, lcdRows);
-
-ThreadController controll;
-Thread menuThread;
-Thread lcdThread;
-
-void menuWrapper(){menuInstance.run();}
-void lcdWrapper(){lcdInstance.run();}
-
+ImplementManager& manager = ImplementManager::getInstance();
+    
 void setup()
 {
-  lcdInstance.lcdSetup();
-  Serial.begin(9600);
-
-  menuThread.onRun(menuWrapper);
-  lcdThread.onRun(lcdWrapper);
-
-  menuThread.setInterval(100);
-  lcdThread.setInterval(100);
-
-  // Adds both threads to the controller
-  controll.add(&menuThread);
-  controll.add(&lcdThread);
+  manager.setup();
+  manager.initializeSimulation();
+  manager.getMenuInterface()->display();
 }
 
-void loop() 
+void loop()
 {
-  controll.run();
+  manager.runSimulation(); 
+  manager.getMenuInterface()->activateAction();
+}
+
+/*
+  SerialEvent occurs whenever a new data comes in the hardware serial RX. This
+  routine is run between each time loop() runs, so using delay inside loop can
+  delay response. Multiple bytes of data may be available.
+*/
+void serialEvent()
+{
+  while (Serial.available())
+  {
+    // get the new byte:
+    char inChar = (char)Serial.read();
+    // add it to the inputString:
+    receivedStr += inChar;
+    // if the incoming character is a newline, set a flag so the main loop can
+    // do something about it:
+    if (inChar == '\n') 
+    {
+      newData = true;
+    }
+  }
 }

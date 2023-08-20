@@ -3,14 +3,16 @@
 // Define LCD pins
 const int rs = 9;
 const int en = 8;
-const int d4 = 5;
-const int d5 = 4;
-const int d6 = 3;
-const int d7 = 2;
+const int d4 = 6;
+const int d5 = 5;
+const int d6 = 4;
+const int d7 = 3;
 
 // Define LCD dimensions
 const int lcdColumns = 16;
 const int lcdRows = 2;
+
+const int lcdDelay = 1000;
 
 myLcd::myLcd(int cols, int rows):m_lcd(rs, en, d4, d5, d6, d7),m_lcdColumns(cols), m_lcdRows(rows){};
 
@@ -56,30 +58,5 @@ void myLcd::flashMessage(const char* message, int times, int onTime, int offTime
     delay(onTime);
     m_lcd.clear();
     delay(offTime);
-  }
-}
-
-void myLcd::run()
-{
-  while(1)
-  {
-    clearLCD();
-    delay(1000);
-  
-    printToLCD(0, 0, "Hello, LCD!");
-    delay(2000);
-    break;
-  
-    printToLCD(1, 3, "Arduino");
-    delay(2000);
-  
-    clearLCD();
-    delay(1000);
-  
-    scrollMessage("This is a scrolling message.", 500);
-    delay(1000);
-  
-    flashMessage("Flashing!", 3, 500, 300);
-    delay(1000);
   }
 }
