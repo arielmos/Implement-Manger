@@ -1,15 +1,24 @@
-#ifndef HEADERS_IMPLEMENT_MANAGER_H_
-#define HEADERS_IMPLEMENT_MANAGER_H_
+#ifndef IMPLEMENT_MANAGER_H_
+#define IMPLEMENT_MANAGER_H_
 
 #include <Arduino.h>
+
 #include "implement.h"
 #include "min_heap.h"
 #include "menu.h"
 #include "lcd.h"
 
-//Menu menuInstance(menuItems, numMenuItems, &lcdInstance);
+// Simulation Constants
+const double SIMULATION_TIME = 100;
+const double TIME_STEP = 1e-2;
+const double TIME_STEP_DELAY = 10;
+const double FUEL_CONSUMPTION_RATE = 1;
+const double FULL_FUEL_TANK = 10;
 
-const int MAX_IMPLEMENT_COUNT = 100;  // Adjust the size as needed
+const int SPI_IMPLEMENTS = 1;
+const int RS232_IMPLEMENTS = 2;
+
+const int MAX_IMPLEMENT_COUNT = 10;
 
 class ImplementManager
 {
@@ -22,10 +31,9 @@ class ImplementManager
 
   ImplementManager() : m_implementCount(0), m_eventQueue(10), m_currentTime(0.0)
   {
-    myLcd* lcdInstance = new myLcd(lcdColumns, lcdRows);
+    myLcd* lcdInstance = new myLcd(LCD_ROWS, LCD_ROWS, LCD_DELAY);
     m_menuInterface = new Menu(menuItems, numMenuItems, lcdInstance);
   }
-
 
 public:
   static ImplementManager& getInstance()
@@ -57,10 +65,11 @@ public:
   void scheduleExternalTriggerEvent(int implementId, bool state, double triggerTime);
   void scheduleTelemetryEvent(int implementId, double telemetryTime);
 
-  void processFuelConsumption(Implement* implement, Event& currentEvent);
   void processTurnOn(Implement* implement, Event& currentEvent);
+  void processFuelConsumption(Implement* implement, Event& currentEvent);
+  void processFuelEmpty(Implement* implement, Event& currentEvent);
   void processExternalTrigger(Implement* implement, Event& currentEvent);
   void processTelemetry(Implement* implement, double telemetryTime);
 };
 
-#endif /* HEADERS_IMPLEMENT_MANAGER_H_ */
+#endif /* IMPLEMENT_MANAGER_H_ */

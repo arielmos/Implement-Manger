@@ -1,9 +1,10 @@
-#ifndef HEADERS_IMPLEMENT_H_
-#define HEADERS_IMPLEMENT_H_
+#ifndef IMPLEMENT_H_
+#define IMPLEMENT_H_
 
 #include <Arduino.h>
 
-class Implement {
+class Implement
+{
 protected:
   int m_id;
   bool m_state;
@@ -14,12 +15,12 @@ public:
   virtual ~Implement(){};
   
   virtual int getId() const = 0;
-  virtual int getState() const = 0;
+  virtual bool getState() const = 0;
   virtual double getFuelLevel() const = 0;
   
   virtual void setId(int id) = 0;
-  virtual void setState(int state) = 0;
+  virtual void setState(bool state) = 0;
   virtual void setFuelLevel(double level) = 0;
 };
 
-#endif /* HEADERS_IMPLEMENT_H_ */
+#endif /* IMPLEMENT_H_ */

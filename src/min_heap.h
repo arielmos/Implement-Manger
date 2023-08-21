@@ -6,14 +6,14 @@
 enum EventType
 {
   TurnOn,
-  TurnOff,
   FuelEmpty,
   ExternalTrigger,
   Telemetry,
   FuelConsumption
 };
 
-class Event {
+class Event
+{
 public:
     double m_time;
     int m_implementId;
@@ -46,7 +46,8 @@ public:
     }
 };
 
-class MinHeap {
+class MinHeap
+{
     Event* heap;
     int capacity;
     int size;
