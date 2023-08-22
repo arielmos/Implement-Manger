@@ -46,7 +46,9 @@ For detailed instructions on setting up the hardware and running the software, p
 
 
 ## Software Schematic
+![schematic-Classes](https://github.com/arielmos/Implement-Manger/assets/54889635/1acd5f33-264a-4ad6-b04f-79c6757cfc60)
 
+![schematic-Flow](https://github.com/arielmos/Implement-Manger/assets/54889635/90cc6f78-f7ca-4f7e-89d7-7ed733a24a21)
 
 ## Hardware Schematic
 ![ImplementManger_hardware_schematic](https://github.com/arielmos/Implement-Manger/assets/54889635/f1f94591-a5c1-42e9-a959-47b2eddb8673)
