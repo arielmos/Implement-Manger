@@ -1,6 +1,6 @@
 # Implement-Manger - Embedded Software Engineer Assignment
 
-![Implement Demo](./Demo.gif)
+![implementation](https://github.com/arielmos/Implement-Manger/assets/54889635/f52437bc-6f93-4fe0-9354-4d2eb7e37989)
 
 # Tractor Implement Management System
 
