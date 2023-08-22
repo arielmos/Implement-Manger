@@ -11,6 +11,8 @@ Welcome to the Tractor Implement Management System repository! This project demo
 
 In this project, we've developed a software module that effectively manages multiple tractor implements, allowing them to be turned on or off and providing telemetry data such as implement status and fuel level. The software is designed to be highly modular and event-driven, ensuring efficient communication between the different components.
 
+To monitor the communication and events between the Arduinos and the Implement Manager, use the Serial Monitor available on the host computer for both Arduino boards.
+
 ## Features
 
 - **Dual Arduino Setup:** Two Arduino microcontrollers are connected using the SPI protocol. Each Arduino is responsible for simulating the behavior of an individual tractor implement.
@@ -31,9 +33,10 @@ To get started with the project, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Connect two Arduino boards to your computer.
-3. Upload the appropriate code to each Arduino from the source files.
-4. Connect the LCD screens to the Arduinos as per the wiring diagram (provided in the repository).
-5. Run the simulation and observe the LCD screens for real-time feedback on implement status and telemetry data.
+3. Connect the LCD screens to the Arduinos according to the hardware schematic.
+4. Upload the appropriate code to each Arduino from the source files and open serial monitors.
+5. Configure simulation parameters to your choice in [implement_manger.h](implement_manger.h).
+6. Run the simulation and observe the LCD screens & serial monitors for real-time feedback on implement status and events. 
 
 For detailed instructions on setting up the hardware and running the software, please refer to the hardware schematic. 
 
