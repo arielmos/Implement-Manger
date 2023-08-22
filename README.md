@@ -35,7 +35,7 @@ To get started with the project, follow these steps:
 2. Connect two Arduino boards to your computer.
 3. Connect the LCD screens to the Arduinos according to the hardware schematic.
 4. Upload the appropriate code to each Arduino from the source files and open serial monitors.
-5. Configure simulation parameters to your choice in [implement_manger.h](implement_manger.h).
+5. Configure simulation parameters to your choice in [implement_manger.h](/src/main_master/implement_manger.h).
 6. Run the simulation and observe the LCD screens & serial monitors for real-time feedback on implement status and events. 
 
 For detailed instructions on setting up the hardware and running the software, please refer to the hardware schematic. 
