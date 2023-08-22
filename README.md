@@ -45,9 +45,12 @@ To get started with the project, follow these steps:
 For detailed instructions on setting up the hardware and running the software, please refer to the hardware schematic. 
 
 
-## Software Schematic
+## Software Schematics
+**Classes**
+
 ![schematic-Classes](https://github.com/arielmos/Implement-Manger/assets/54889635/1acd5f33-264a-4ad6-b04f-79c6757cfc60)
 
+**Flow**
 ![schematic-Flow](https://github.com/arielmos/Implement-Manger/assets/54889635/90cc6f78-f7ca-4f7e-89d7-7ed733a24a21)
 
 ## Hardware Schematic
