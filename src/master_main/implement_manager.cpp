@@ -239,7 +239,6 @@ void ImplementManager::scheduleExternalTriggerEvent(unsigned int implementId, bo
   exTriggerEvent.m_implementId = implementId;
   exTriggerEvent.m_eventType = ExternalTrigger;
   exTriggerEvent.m_state = state;
-  exTriggerEvent.m_triggerTime = triggerTime;
   m_eventQueue.insert(exTriggerEvent);
 }
 

@@ -20,11 +20,10 @@ public:
     EventType m_eventType;
     
     bool m_state;
-    double m_triggerTime;
 
     Event(){};
     Event(double time, unsigned int implementId, EventType eventType);
-    Event(double time, unsigned int implementId, EventType eventType, bool state, double triggerTime);
+    Event(double time, unsigned int implementId, EventType eventType, bool state);
 
     bool operator<(const Event& other) const
     {

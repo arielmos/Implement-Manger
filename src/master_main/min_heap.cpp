@@ -3,8 +3,8 @@
 Event::Event(double time, unsigned int implementId, EventType eventType)
         : m_time(time), m_implementId(implementId), m_eventType(eventType){}
 
-Event::Event(double time, unsigned int implementId, EventType eventType, bool state, double triggerTime)
-        : m_time(time), m_implementId(implementId), m_eventType(eventType), m_state(state), m_triggerTime(triggerTime){}
+Event::Event(double time, unsigned int implementId, EventType eventType, bool state)
+        : m_time(time), m_implementId(implementId), m_eventType(eventType), m_state(state){}
 
 void MinHeap::heapifyUp(unsigned int index)
 {
