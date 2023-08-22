@@ -1,6 +1,5 @@
 # Implement-Manger - Embedded Software Engineer Assignment
 
-
 ![ezgif-2-f433b00266](https://github.com/arielmos/Implement-Manger/assets/54889635/acbafe92-edf6-47b2-9591-fdfee437e457)
 
 # Tractor Implement Management System
@@ -9,7 +8,7 @@ Welcome to the Tractor Implement Management System repository! This project demo
 
 ## Overview
 
-In this project, we've developed a software module that effectively manages multiple tractor implements, allowing them to be turned on or off and providing telemetry data such as implement status and fuel level. The software is designed to be highly modular and event-driven, ensuring efficient communication between the different components.
+In this project, we've developed a software module that effectively manages multiple tractor implements, turning them on or off and providing telemetry data such as implement status and fuel level. The software is designed to be highly modular and event-driven, ensuring efficient communication between the different components.
 
 To monitor the communication and events between the Arduinos and the Implement Manager, use the serial monitor available on the host computer for both Arduino boards.
 
