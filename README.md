@@ -8,7 +8,7 @@ Welcome to the Tractor Implement Management System repository! This project demo
 
 ## Overview
 
-In this project, we've developed a software module that effectively manages multiple tractor implements, turning them on or off and providing telemetry data such as implement status and fuel level. The software is designed to be highly modular and event-driven, ensuring efficient communication between the different components.
+In this project, I've developed a software module that effectively manages multiple tractor implements, turning them on or off and providing telemetry data such as implement status and fuel level. The software is designed to be highly modular and event-driven, ensuring efficient communication between the different components.
 
 To monitor the communication and events between the Arduinos and the Implement Manager, use the serial monitor available on the host computer for both Arduino boards.
 
