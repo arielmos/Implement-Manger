@@ -1,16 +1,16 @@
 #include "min_heap.h"
 
-Event::Event(double time, int implementId, EventType eventType)
+Event::Event(double time, unsigned int implementId, EventType eventType)
         : m_time(time), m_implementId(implementId), m_eventType(eventType){}
 
-Event::Event(double time, int implementId, EventType eventType, bool state, double triggerTime)
+Event::Event(double time, unsigned int implementId, EventType eventType, bool state, double triggerTime)
         : m_time(time), m_implementId(implementId), m_eventType(eventType), m_state(state), m_triggerTime(triggerTime){}
 
-void MinHeap::heapifyUp(int index)
+void MinHeap::heapifyUp(unsigned int index)
 {
     while (index > 0)
     {
-        int parentIndex = (index - 1) / 2;
+        unsigned int parentIndex = (index - 1) / 2;
         if (heap[index] < heap[parentIndex])
         {
             swap(heap[parentIndex], heap[index]);
@@ -23,11 +23,11 @@ void MinHeap::heapifyUp(int index)
     }
 }
 
-void MinHeap::heapifyDown(int index)
+void MinHeap::heapifyDown(unsigned int index)
 {
-    int leftChild = 2 * index + 1;
-    int rightChild = 2 * index + 2;
-    int smallest = index;
+    unsigned int leftChild = 2 * index + 1;
+    unsigned int rightChild = 2 * index + 2;
+    unsigned int smallest = index;
 
     if (leftChild < size && heap[leftChild] < heap[smallest])
     {
@@ -45,10 +45,10 @@ void MinHeap::heapifyDown(int index)
     }
 }
 
-void MinHeap::resizeHeap(int newCapacity)
+void MinHeap::resizeHeap(unsigned int newCapacity)
 {
     Event* newHeap = new Event[newCapacity];
-    for (int i = 0; i < size; ++i)
+    for (unsigned int i = 0; i < size; ++i)
     {
         newHeap[i] = heap[i];
     }
@@ -64,7 +64,7 @@ void MinHeap::swap(Event& a, Event& b)
     b = temp;
 }
 
-MinHeap::MinHeap(int initialCapacity) : capacity(initialCapacity), size(0)
+MinHeap::MinHeap(unsigned int initialCapacity) : capacity(initialCapacity), size(0)
 {
     heap = new Event[capacity];
 }
@@ -106,7 +106,7 @@ Event MinHeap::top()const
 
 void MinHeap::printHeap()
 {
-    for (int i = 0; i < size; ++i)
+    for (unsigned int i = 0; i < size; ++i)
     {
         Serial.print("currentEvent.m_time = ");
         Serial.print(heap[i].m_time);

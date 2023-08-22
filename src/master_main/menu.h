@@ -6,12 +6,12 @@
 #include "lcd.h"
 
 struct MenuItem {
-    const int index;
+    const unsigned int index;
     const char* description;
 };
 
 extern MenuItem menuItems[];
-extern const int numMenuItems;
+extern const unsigned int numMenuItems;
 
 extern volatile bool newData;
 extern String receivedStr;
@@ -19,10 +19,10 @@ extern String receivedStr;
 class Menu
 {
     MenuItem* m_menuItems;
-    int m_numMenuItems;
+    unsigned int m_numMenuItems;
     myLcd* m_lcdInterface;
 public:
-    Menu(MenuItem* items, int itemCount, myLcd* lcd);
+    Menu(MenuItem* items, unsigned int itemCount, myLcd* lcd);
     
     void display();
     
@@ -31,7 +31,7 @@ public:
 
     void activateAction();
     void actionOption1();
-    void actionOption2(int id);
+    void actionOption2(unsigned int id);
 };
 
 void serialEvent();

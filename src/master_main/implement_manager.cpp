@@ -31,27 +31,25 @@ void ImplementManager::initializeSimulation()
   Implement* rs232Implements = new RS232Implement[RS232_IMPLEMENTS];
   Implement* spiImplements = new SPIImplement[SPI_IMPLEMENTS](SS_PIN);
 
-  for (int i = 0; i < SPI_IMPLEMENTS; i++)
+  for (unsigned int i = 0; i < SPI_IMPLEMENTS; i++)
   {
     addImplement(&spiImplements[i]);
   }
 
-  for (int i = 0; i < RS232_IMPLEMENTS; i++)
+  for (unsigned int i = 0; i < RS232_IMPLEMENTS; i++)
   {
     addImplement(&rs232Implements[i]);
   }
    
   // Add initial turn-on events for each implement
-  for (int i = 0; i < m_implementCount; i++)
+  for (unsigned int i = 0; i < m_implementCount; i++)
   {
     scheduleTurnOnEvent(m_implements[i]->getId());
   }
 }
 
 void ImplementManager::runSimulation()
-{
-  double currentTime = getCurrentTime();
-  
+{ 
   while (!m_eventQueue.isEmpty())
   {
     Event currentEvent = m_eventQueue.top();
@@ -88,29 +86,32 @@ void ImplementManager::runSimulation()
     }
   }
 
+  static bool endSim = true;
+  double currentTime = getCurrentTime();
+//  Serial.print("currentTime = ");
+//  Serial.println(currentTime);
+
   if(currentTime <= SIMULATION_TIME)
   {
-    for (int i = 0; i < m_implementCount; i++)
+    for (unsigned int i = 0; i < m_implementCount; i++)
     {
       if (m_implements[i]->getState())
       {
         scheduleFuelConsumptionEvent(m_implements[i]->getId(), getCurrentTime());
       }
     }
-  
+
     // Update simulation time
     setCurrentTime(currentTime + TIME_STEP);
     delay(TIME_STEP_DELAY);
-
-//    Serial.print("currentTime = ");
-//    Serial.println(currentTime);
-
-    if(currentTime == SIMULATION_TIME)
-    {
-      Serial.println("======== Simulation Finished =========");
-    }
   }
-
+  else if(endSim)
+  {
+    Serial.println("======== Simulation Finished =========");
+    m_menuInterface->getLcdInterface()->printToLCD(0, 0, "== Simulation ==");
+    m_menuInterface->getLcdInterface()->printToLCD(1, 0, "==== Finshed ===");
+    endSim = false;
+  }
 }
 
 void ImplementManager::processTurnOn(Implement* implement, Event& currentEvent)
@@ -204,7 +205,7 @@ void ImplementManager::processTelemetry(Implement* implement, double telemetryTi
   m_menuInterface->getLcdInterface()->clearLCD();
 }
 
-void ImplementManager::scheduleTurnOnEvent(int implementId)
+void ImplementManager::scheduleTurnOnEvent(unsigned int implementId)
 {
   Event turnOnEvent;
   turnOnEvent.m_time = 0.0;
@@ -213,7 +214,7 @@ void ImplementManager::scheduleTurnOnEvent(int implementId)
   m_eventQueue.insert(turnOnEvent);
 }
 
-void ImplementManager::scheduleFuelConsumptionEvent(int implementId, double fuelConsumptionTime)
+void ImplementManager::scheduleFuelConsumptionEvent(unsigned int implementId, double fuelConsumptionTime)
 {
   Event fuelConsumptionEvent;
   fuelConsumptionEvent.m_time = fuelConsumptionTime;
@@ -222,7 +223,7 @@ void ImplementManager::scheduleFuelConsumptionEvent(int implementId, double fuel
   m_eventQueue.insert(fuelConsumptionEvent);
 }
 
-void ImplementManager::scheduleFuelEmptyEvent(int implementId, double fuelEmptyTime)
+void ImplementManager::scheduleFuelEmptyEvent(unsigned int implementId, double fuelEmptyTime)
 {
   Event fuelEmptyEvent;
   fuelEmptyEvent.m_time = fuelEmptyTime;
@@ -231,7 +232,7 @@ void ImplementManager::scheduleFuelEmptyEvent(int implementId, double fuelEmptyT
   m_eventQueue.insert(fuelEmptyEvent);
 }
 
-void ImplementManager::scheduleExternalTriggerEvent(int implementId, bool state, double triggerTime)
+void ImplementManager::scheduleExternalTriggerEvent(unsigned int implementId, bool state, double triggerTime)
 {
   Event exTriggerEvent;
   exTriggerEvent.m_time = triggerTime;
@@ -242,7 +243,7 @@ void ImplementManager::scheduleExternalTriggerEvent(int implementId, bool state,
   m_eventQueue.insert(exTriggerEvent);
 }
 
-void ImplementManager::scheduleTelemetryEvent(int implementId, double telemetryTime)
+void ImplementManager::scheduleTelemetryEvent(unsigned int implementId, double telemetryTime)
 {
   Event telemetryEvent;
   telemetryEvent.m_time = telemetryTime;

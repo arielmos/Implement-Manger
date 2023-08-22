@@ -10,11 +10,11 @@ class RS232Implement : public Implement
 public:
     ~RS232Implement(){};
 
-    int getId()const{return m_id;}
+    unsigned int getId()const{return m_id;}
     bool getState()const{return m_state;}
     double getFuelLevel()const{return m_fuelLevel;}
 
-    void setId(int id){m_id = id;}
+    void setId(unsigned id){m_id = id;}
     void setState(bool state){m_state = state;}
     void setFuelLevel(double level){m_fuelLevel = level;}
 

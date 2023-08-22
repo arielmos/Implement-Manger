@@ -8,15 +8,15 @@ MenuItem menuItems[] =
     {2, "External Trigger"}
 };
 
-const int numMenuItems = sizeof(menuItems) / sizeof(menuItems[0]);
+const unsigned int numMenuItems = sizeof(menuItems) / sizeof(menuItems[0]);
 
-Menu::Menu(MenuItem* items, int itemCount, myLcd* lcd)
+Menu::Menu(MenuItem* items, unsigned int itemCount, myLcd* lcd)
           : m_menuItems(items), m_numMenuItems(itemCount), m_lcdInterface(lcd){}
 
 void Menu::display()
 {
     Serial.println("================ Menu ================");
-    for (int i = 0; i < m_numMenuItems; i++)
+    for (unsigned int i = 0; i < m_numMenuItems; i++)
     {
         Serial.print(m_menuItems[i].index);
         Serial.print(": ");
@@ -36,7 +36,7 @@ void Menu::activateAction()
     newData = false;
     receivedStr = "";
   
-    int action, id;
+    unsigned int action, id;
     
     if(chooseImplement)
     {
@@ -101,13 +101,13 @@ void Menu::actionOption1()
 
     ImplementManager& manager = ImplementManager::getInstance();
 
-    for (int i = 0; i < manager.getImplementCount(); i++)
+    for (unsigned int i = 0; i < manager.getImplementCount(); i++)
     {
         manager.scheduleTelemetryEvent(manager.getImplements(i)->getId(), manager.getCurrentTime());
     }
 }
 
-void Menu::actionOption2(int id)
+void Menu::actionOption2(unsigned int id)
 {
     Serial.println("--------- Executing Option 2 ---------\n");
 

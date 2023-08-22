@@ -16,15 +16,15 @@ class Event
 {
 public:
     double m_time;
-    int m_implementId;
+    unsigned int m_implementId;
     EventType m_eventType;
     
     bool m_state;
     double m_triggerTime;
 
     Event(){};
-    Event(double time, int implementId, EventType eventType);
-    Event(double time, int implementId, EventType eventType, bool state, double triggerTime);
+    Event(double time, unsigned int implementId, EventType eventType);
+    Event(double time, unsigned int implementId, EventType eventType, bool state, double triggerTime);
 
     bool operator<(const Event& other) const
     {
@@ -49,19 +49,19 @@ public:
 class MinHeap
 {
     Event* heap;
-    int capacity;
-    int size;
+    unsigned int capacity;
+    unsigned int size;
 
-    void heapifyUp(int index);
-    void heapifyDown(int index);
-    void resizeHeap(int newCapacity);
+    void heapifyUp(unsigned int index);
+    void heapifyDown(unsigned int index);
+    void resizeHeap(unsigned int newCapacity);
     void swap(Event& a, Event& b);
     
 public:
-    MinHeap(int initialCapacity);
+    MinHeap(unsigned int initialCapacity);
     ~MinHeap();
     
-    int getSize()const{return size;}
+    unsigned int getSize()const{return size;}
     bool isEmpty()const{return size == 0;} 
     void insert(const Event& event);
     void pop();
