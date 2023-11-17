@@ -1,4 +1,4 @@
-# Implement-Manger - Embedded Software Engineer Assignment test23`
+# Implement-Manger - Embedded Software Engineer Assignment
 
 ![implementation](https://github.com/arielmos/Implement-Manger/assets/54889635/f52437bc-6f93-4fe0-9354-4d2eb7e37989)
 
